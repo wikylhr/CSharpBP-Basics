@@ -27,5 +27,40 @@ namespace Acme.Biz.Tests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod()]
+        public void SayHello_ParameteriazedConstructorTest()
+        {
+            //Arrange
+            Product currentProduct = new Product(1, "Pizza", "A tasty mushroom and olives pizza.");
+            
+            string expected = "Hello Pizza (1): A tasty mushroom and olives pizza.";
+
+            //Act
+            string actual = currentProduct.SayHello();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void SayHello_ObjectInitializerTest()
+        {
+            //Arrange
+            Product currentProduct = new Product
+            {
+                ProductID = 1,
+                ProductName = "Pizza",
+                Description = "A tasty mushroom and olives pizza."
+            };
+
+            string expected = "Hello Pizza (1): A tasty mushroom and olives pizza.";
+
+            //Act
+            string actual = currentProduct.SayHello();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
